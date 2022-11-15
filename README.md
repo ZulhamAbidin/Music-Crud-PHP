@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-MUSIK CRUD MENGGUNAKAN PHP MYSQL
+MUSIK MENGGUNAKAN PHP MYSQL
 
 Cara instalasi
 1. Unduh atau clone project ini 
@@ -13,7 +13,7 @@ terima kasih Ezenwa Hopekell
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-CRUD MUSIC USING PHP MYSQL
+MUSIC USING PHP MYSQL
 
 How to install
 1. Download or clone this project
