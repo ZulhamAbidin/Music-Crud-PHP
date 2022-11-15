@@ -50,14 +50,12 @@ if(isset($_POST['btn-upload']))
 		if ($conn->query($sql) === TRUE) {
 			?>
 			<script>
-				alert("Song uploaded...")
 				window.location.href="upload.php?success";
 			</script>
 			<?php
 		} else {
 			?>
 			<script>
-				alert("Song upload failed...")
 				window.location.href="upload.php?danger";
 			</script>
 			<?php

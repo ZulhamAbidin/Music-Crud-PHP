@@ -1,4 +1,3 @@
-
 <?php
 include "database.php";
 
@@ -75,24 +74,19 @@ if (isset($_GET['music'])){
 }
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html>
+
 <head>
-	<!-- Responsive meta tag-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Download <?php echo $row['songName'];?> || Multi File Upload, Add to databaase and view in PHP and MySQL</title>
-
-	<!--Style sheets-->
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-
-	<!--Custom styles-->
-	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
-
-
-	<!--Font icons-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
+	<script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+		integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+	<title>Download</title>
+	<link rel="icon" href="assets/verified-white.png">
 	<!-- Jplayer-->
 	<link href="jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="jplayer/lib/jquery.min.js"></script>
@@ -122,68 +116,136 @@ if (isset($_GET['music'])){
 	});
 	//]]>
 	</script>
-	<script type="text/javascript">
-		$(function () {
-		  $('[data-toggle="tooltip"]').tooltip()
-		})
-	</script>
-	<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=6005a45cd6f99f0018f9aba3&product=sop' async='async'></script>
-</head>
-<body>
+	</head>
 
-	<!--Navigation bar-->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <div class="container-fluid">
-	    <a class="navbar-brand" href="http://HopekellDev.info">HopekellDev.info</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="./">Home</a>
-	        </li>
-	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Categories
-	          </a>
-	          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-	            <li><a class="dropdown-item" href="https://hopekelldev.info/category/html/" target="blank">HTML</a></li>
-	            <li><a class="dropdown-item" href="https://hopekelldev.info/category/css/" target="blank">CSS</a></li>
-	            <li><a class="dropdown-item" href="https://hopekelldev.info/category/javascript/" target="blank">Javascript</a></li>
-	            <li><a class="dropdown-item" href="https://hopekelldev.info/category/php/" target="blank">PHP</a></li>
-	            <li><a class="dropdown-item" href="https://hopekelldev.info/category/bootstrap/" target="blank">Bootstrap</a></li>
-	            <li><a class="dropdown-item" href="https://hopekelldev.info/category/laravel/" target="blank">Laravel</a></li>
-	            <li><a class="dropdown-item" href="https://hopekelldev.info/category/wordpress/" target="blank">Wordpress</a></li>
-	          </ul>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="upload.php" tabindex="-1" aria-disabled="true">Upload Files</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="uploads.php" tabindex="-1" aria-disabled="true">View Uploads</a>
-	        </li>
-	      </ul>
-	      <form class="d-flex">
-	        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-	        <button class="btn btn-outline-success" type="submit">Search</button>
-	      </form>
-	    </div>
-	  </div>
+<body>
+	<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2 border-b-2 mb-10">
+		<div class="container flex flex-wrap items-center justify-between mx-auto">
+			<a href="https://flowbite.com/" class="flex items-center">
+				<img src="https://flowbite.com/docs/images/logo.svg" class="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
+				<span class="self-center text-xl whitespace-nowrap font-extrabold text-violet-700 ">KAMAR MUSIK</span>
+			</a>
+			<button data-collapse-toggle="navbar-default" type="button"
+				class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+				aria-controls="navbar-default" aria-expanded="false">
+				<span class="sr-only">Open main menu</span>
+				<svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+					xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd"
+						d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+						clip-rule="evenodd"></path>
+				</svg>
+			</button>
+			<div class="hidden w-full md:block md:w-auto" id="navbar-default">
+				<ul
+					class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+					<li>
+						<a href="uploads.php"
+							class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Home
+							</a>
+					</li>
+					<li>
+						<a href="upload.php"
+							class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Unggah
+							Musik</a>
+					</li>
+					<li>
+						<a href="#"
+							class="block py-2 pl-3 pr-4  text-violet-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Preview</a>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</nav>
 
-	<!--Main Container-->
-	<div class="container">
-		<div class="card">
-			<center><h3 class="text-primary">Download Notice [<?php echo $row['songName']." by ".$row['songArtist'];?>] </h3></center>
-			<hr />
-			<div class="row">
-				<div class="col-md-6 col-lg-6 col-sm-12">
-					<img src="uploads/cover/<?php echo $row['songCover'];?>" width="100%">
-					<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-					<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+
+
+
+
+	<!-- custom card -->
+
+	
+		<div class="col-span-6 text-center py-2">
+			<h1
+				class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-center text-gray-900 md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+				<?php echo $row['songName'];?></h1>
+			<hr class="my-8 w-96 mx-auto h-1 bg-gradient-to-r from-pink-500 to-violet-500 rounded border-0">
+			<p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl  sm:px-16 xl:px-48"></p>
+		</div>
+
+
+		
+		<div class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-3xl hover:bg-gray-100 mx-auto pb-10 mb-20 mt-10">
+			<img class="object-cover mx-10 rounded-t-lg mx-auto h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg my-6 rounded-xl" src="uploads/cover/<?php echo $row['songCover'];?>" alt="">
+			<div class="flex flex-col justify-between p-4 leading-normal">
+					
+				<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Judul <?php echo $row['songName'];?></h5>
+				<div class="mb-3 text-slate-900 grid grid-cols-2 font-medium mt-4">
+					<div class="col-span-1">
+						<ul>
+							<li>
+								Judul
+							</li>
+							<li>
+								Pencipta
+							</li>
+							<li>
+								Tanggal Unggah
+							</li>
+							<li>
+								Nama Pengunggah
+							</li>
+							<li>
+								Total Unduhan
+							</li>
+						</ul>
+					</div>
+					<div class="col-span-1">
+						<ul>
+							<li>
+								: <?php echo $row['songName'];?>
+							</li>
+							<li>
+								: <?php echo $row['songArtist'];?>
+							</li>
+							<li>
+								: <?php echo $row['songDate'];?>
+							</li>
+							<li>
+								: <?php echo $row['songUploader'];?>
+								
+							</li>
+							<li>
+								: <?php echo number_format($row['songDownloads'],0,'.',',');?>
+							</li>
+						</ul>
+					</div> 
+
+					<div class="col-span-2 mt-10 mb-5 mx-auto">
+						<form method="post" class="justify-content-center">
+							<input type="hidden" name="music" value="<?php echo $row['songID'];?>">
+							<button type="submit" name="btn-download"   title="Download <?php echo $row['songName'];?>" class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white ">
+								<span class="relative flex px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md group-hover:bg-opacity-0">
+									Download
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+										stroke="currentColor" class="w-6 h-6 ml-2">
+										<path stroke-linecap="round" stroke-linejoin="round"
+											d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15M9 12l3 3m0 0l3-3m-3 3V2.25" />
+									</svg>
+								</span>
+							</button>
+						</form>
+					</div>
+
+				</div>
+
+				<!-- pemutar -->
+
+				<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+
+					<div id="jp_container_1" class="jp-audio mx-auto" role="application" aria-label="media player">
 						<div class="jp-type-single">
-							<div class="jp-gui jp-interface">
+							<div class="jp-gui jp-interface bg-slate-50">
 								<div class="jp-controls">
 									<button class="jp-play" role="button" tabindex="0">play</button>
 									<button class="jp-stop" role="button" tabindex="0">stop</button>
@@ -217,45 +279,41 @@ if (isset($_GET['music'])){
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-6 col-lg-6 col-sm-12">
-					<h4 class="text-muted">Song Details</h4>
-					<hr />
-					<p><b>Name: </b><span style="float: right;"><?php echo $row['songName'];?></span></p>
-					<p><b>Artist: </b><span style="float: right;"><?php echo $row['songArtist'];?></span></p>
-					<p><b>Upload date: </b><span style="float: right;"><?php echo $row['songDate'];?></span></p>
-					<p><b>Uploader: </b><span style="float: right;"><?php echo $row['songUploader'];?></span></p>
-					<p><b>Views: </b><span style="float: right;"> <?php echo number_format($row['songViews'],0,'.',',');?></span></p>
-					<p><b>Likes: </b><span style="float: right;"> <?php echo number_format($row['songLike'],0,'.',',');?></span></p>
-					<p><b>Dislikes: </b><span style="float: right;"> <?php echo number_format($row['songDislikes'],0,'.',',');?></span></p>
-					<hr />
-					<center>
-						<form method="post" class="justify-content-center">
-							<button type="submit" name="btn-like" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Like"><i class="fa fa-thumbs-up"></i> | <?php echo number_format($row['songLike'],0,'.',',');?></button>
 
-							<button type="submit" name="btn-dislike" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Dislike"><i class="fa fa-thumbs-down"></i> | <?php echo number_format($row['songDislikes'],0,'.',',');?></button>
-
-							<input type="hidden" name="music" value="<?php echo $row['songID'];?>">
-							<button type="submit" class="btn btn-success" name="btn-download" title="Download <?php echo $row['songName'];?>"><i class="fa fa-download"></i> | <?php echo number_format($row['songDownloads'],0,'.',',');?></button>
-						</form>
-					</center>
-					<br>
-					<p align="center">Share song</p>
-					<!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
-				</div>
+				<!-- end pemutar -->
 			</div>
 		</div>
-	</div>
-<script>
-	$(function () {
-	  $('[data-toggle="tooltip"]').tooltip()
-	})
-</script>
-<!-- Core javascript files-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+
+
+	
+<footer class="p-4 shadow bg-white border-t-4 text-slate-900 md:flex md:items-center md:justify-between md:p-6 ">
+    <span class="text-sm text-slate-900 sm:text-center">© 2022 <a href="https://flowbite.com/" class="hover:underline">Flowbite™ & Kelompok1</a>. All Rights Reserved.
+    </span>
+    <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500sm:mt-0">
+        <li>
+            <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+        </li>
+        <li>
+            <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+        </li>
+        <li>
+            <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline">Contact</a>
+        </li>
+    </ul>
+</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+		integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
+	</script>
+
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/popper.min.js"></script>
+	<script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
