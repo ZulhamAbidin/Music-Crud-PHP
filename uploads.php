@@ -76,9 +76,20 @@ error_reporting(0);
 
 	<div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-x-4 gap-y-6 mx-10 mt-16 mb-24">
 
-		<?php
+		<?php	
 				include "database.php";
 				$sql = "SELECT * FROM tbl_songs ORDER BY songID DESC Limit 20";
+				 
+				// menangkap data id yang di kirim dari url
+				$row = $_GET['id'];
+				
+				
+				// menghapus data dari database
+				mysqli_query($conn,"delete from tbl_songs where songID='$row'");
+				
+				// mengalihkan halaman kembali ke index.php
+				header("location:index.php");
+ 
 				$result = $conn->query($sql);
 				include"function.time-ago.php";
 				if ($result->num_rows > 0) {
@@ -86,14 +97,17 @@ error_reporting(0);
 			 	while($row = $result->fetch_assoc()) {
 			 		$timeago=get_timeago(strtotime($row['songDate']));
 		?>
-		<a href="download.php?music=<?php echo $row['songID'];?>" class="w-full  col-span-3 mx-auto md:col-span-2 lg:col-span-1 max-w-sm bg-white border border-gray-200 rounded-lg shadow-md ">
+		<div class="w-full  col-span-3 mx-auto md:col-span-2 lg:col-span-1 max-w-sm bg-white border border-gray-200 rounded-lg shadow-md ">
 			<div class="flex flex-col items-center pb-6 mt-10">
 				<img class="w-24 h-24 mb-3 rounded-full shadow-lg"  src="uploads/cover/<?php echo $row['songCover'];?>" alt="Bonnie image"/>
 				<h5 class="mb-1 text-xl font-medium text-gray-900"><?php echo $row['songName'];?></h5>
 				<span class="text-sm text-gray-500 "><?php echo $row['songArtist'];?></span>
 			</div>
-			<button type="button" class="hover:text-white hover:border-0 hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500 flex ml-36 py-2.5 px-5 mr-2 mb-14 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200">Lihat</button>
-		</a>
+			<div class="flex justify-center">
+				<a href="download.php?music=<?php echo $row['songID'];?>" type="button" class=" hover:text-white hover:border-0 hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500  py-2.5 px-5 mr-2 mb-14 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200">Lihat</a>
+				<a href="uploads.php?id=<?php echo $row['songID']; ?>"  type="button" class="hover:text-white hover:border-0 hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500 py-2.5 px-5 mr-2 mb-14 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200">Hapus</a>
+			</div>
+		</div>
 
 		<?php
 				}
