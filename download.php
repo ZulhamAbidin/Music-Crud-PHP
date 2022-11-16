@@ -1,26 +1,17 @@
 <?php
 include "database.php";
 
-
-//Download handler
 if (isset($_POST['btn-download'])) {
 	$id = $_POST['music'];
-	$sql = "SELECT * FROM tbl_songs WHERE songID='$id'"; //Get music details from database
+	$sql = "SELECT * FROM tbl_songs WHERE songID='$id'"; 
 	$result = $conn->query($sql);
 	if ($result->num_rows > 0) {
 		$row = $result->fetch_assoc();
-
-		//Increase downloads (Counter)
-		$sql = "UPDATE tbl_songs SET songDownloads=songDownloads+1 WHERE songID='$id'";
-		$conn->query($sql);# downloads
-
-		//Forec PHP file download
 		$file_name = $row['songFile'];
 		$file_url = 'uploads/audio/' . $file_name;
 		header('Content-Type: application/octet-stream');
 		header("Content-Transfer-Encoding: Binary"); 
 		header("Content-disposition: attachment; filename=\"".$file_name."\""); 
-
 		if (readfile($file_url)){
 			?>
 			<script>
@@ -28,49 +19,17 @@ if (isset($_POST['btn-download'])) {
 			</script>
 			<?php
 		}
-		exit;#File download
+		exit;
 	}
 }
 
-//Add like on button click
-if (isset($_POST['btn-like'])) {
-	$id = $_POST['music'];
-	$sql = "UPDATE tbl_songs SET songLike=songLike+1 WHERE songID='$id'";
-	if ($conn->query($sql) === TRUE) {
-			?>
-			<script>
-				window.location.href='download.php?music=<?php echo $id;?>';
-			</script>
-			<?php
-	}
-}
-
-//Add dislike on button click
-if (isset($_POST['btn-dislike'])) {
-	$id = $_POST['music'];
-	$sql = "UPDATE tbl_songs SET songDislikes=songDislikes+1 WHERE songID='$id'";
-	if ($conn->query($sql) === TRUE) {
-			?>
-			<script>
-				window.location.href='download.php?music=<?php echo $id;?>';
-			</script>
-			<?php
-	}
-}
 if (isset($_GET['music'])){
 	$id = $_GET['music'];
 	$sql = "SELECT * FROM tbl_songs WHERE songID='$id'";
 	$result = $conn->query($sql);
-	include"function.time-ago.php";
-	if ($result->num_rows > 0) {
+	if ($result->num_rows > 0) 
 		$row = $result->fetch_assoc();
-
-		$view = "UPDATE tbl_songs SET songViews=songViews+1 WHERE songID='$id'";
-		$conn->query($view);
-	}else{
-
-	}
-
+	
 }
 ?>
 
@@ -83,8 +42,6 @@ if (isset($_GET['music'])){
 	<script src="https://cdn.tailwindcss.com"></script>
 	<link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
 	<script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-		integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 	<title>Download</title>
 	<link rel="icon" href="assets/verified-white.png">
 	<!-- Jplayer-->
@@ -158,12 +115,6 @@ if (isset($_GET['music'])){
 		</div>
 	</nav>
 
-
-
-
-
-	<!-- custom card -->
-
 	
 		<div class="col-span-6 text-center py-2">
 			<h1
@@ -172,8 +123,6 @@ if (isset($_GET['music'])){
 			<hr class="my-8 w-96 mx-auto h-1 bg-gradient-to-r from-pink-500 to-violet-500 rounded border-0">
 			<p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl  sm:px-16 xl:px-48"></p>
 		</div>
-
-
 		
 		<div class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-3xl hover:bg-gray-100 mx-auto pb-10 mb-20 mt-10">
 			<img class="object-cover mx-10 rounded-t-lg mx-auto h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg my-6 rounded-xl" src="uploads/cover/<?php echo $row['songCover'];?>" alt="">
@@ -189,15 +138,11 @@ if (isset($_GET['music'])){
 							<li>
 								Pencipta
 							</li>
-							<li>
-								Tanggal Unggah
-							</li>
+							
 							<li>
 								Nama Pengunggah
 							</li>
-							<li>
-								Total Unduhan
-							</li>
+							
 						</ul>
 					</div>
 					<div class="col-span-1">
@@ -208,16 +153,12 @@ if (isset($_GET['music'])){
 							<li>
 								: <?php echo $row['songArtist'];?>
 							</li>
-							<li>
-								: <?php echo $row['songDate'];?>
-							</li>
+							
 							<li>
 								: <?php echo $row['songUploader'];?>
 								
 							</li>
-							<li>
-								: <?php echo number_format($row['songDownloads'],0,'.',',');?>
-							</li>
+						
 						</ul>
 					</div> 
 
@@ -285,9 +226,6 @@ if (isset($_GET['music'])){
 		</div>
 
 
-
-
-	
 <footer class="p-4 shadow bg-white border-t-4 text-slate-900 md:flex md:items-center md:justify-between md:p-6 ">
     <span class="text-sm text-slate-900 sm:text-center">© 2022 <a href="https://flowbite.com/" class="hover:underline">Flowbite™ & Kelompok1</a>. All Rights Reserved.
     </span>
@@ -307,13 +245,9 @@ if (isset($_GET['music'])){
     </ul>
 </footer>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-		integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
-	</script>
+	
 
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/popper.min.js"></script>
-	<script src="assets/js/bootstrap.bundle.min.js"></script>
+	
 </body>
 
 </html>

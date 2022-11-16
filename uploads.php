@@ -1,25 +1,20 @@
-<?php
-error_reporting(0);
 
-?>
 <!doctype html>
 <html>
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
 	<script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-		integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-	<title>List Musik</title>
+
+
+	<link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 	<link rel="icon" href="assets/verified-white.png">
 
-
-	<!-- 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+	<title>List Musik</title>
 </head>
 
 <body>
@@ -91,11 +86,10 @@ error_reporting(0);
 				header("location:index.php");
  
 				$result = $conn->query($sql);
-				include"function.time-ago.php";
+				// include"function.time-ago.php";
 				if ($result->num_rows > 0) {
-				// output data of each row
 			 	while($row = $result->fetch_assoc()) {
-			 		$timeago=get_timeago(strtotime($row['songDate']));
+			 		($row['songDate']);
 		?>
 		<div class="w-full  col-span-3 mx-auto md:col-span-2 lg:col-span-1 max-w-sm bg-white border border-gray-200 rounded-lg shadow-md ">
 			<div class="flex flex-col items-center pb-6 mt-10">
@@ -139,16 +133,6 @@ error_reporting(0);
     </ul>
 </footer>
 
-
-	<!-- Core javascript files-->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-		integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
-	</script>
-
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/popper.min.js"></script>
-	<script src="tailwind.config.js"></script>
-	<script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
