@@ -23,8 +23,6 @@ error_reporting(0);
 		header("location:../index.php?pesan=belum_login");
 	}
 	?>
-
-	<a class="nav-link" href="logout.php">Logout</a>
 	<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2 border-b-2 mb-10">
 		<div class="container flex flex-wrap items-center justify-between mx-auto">
 			<a href="https://flowbite.com/" class="flex items-center">
@@ -55,8 +53,8 @@ error_reporting(0);
 							Musik</a>
 					</li>
 					<li>
-						<a href="#"
-							class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Preview</a>
+						<a href="logout.php"
+							class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Logout</a>
 					</li>
 				</ul>
 			</div>

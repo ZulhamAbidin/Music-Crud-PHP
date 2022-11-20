@@ -4,10 +4,9 @@ if(isset($_POST['btn-upload']))
 {    
 	$song_name	=	$_POST["song_name"];
 	$artise_name=	$_POST["artise_name"];
-	$category	=	$_POST["category"];
 	$song_uploader= $_POST["song_uploader"];
 	//Song File
-	$song_file = "realsoundz_com_".rand(1000,100000)."_".$_FILES['song_file']['name'];
+	$song_file = "kelompok1_".rand(1000,100000)."_".$_FILES['song_file']['name'];
 	$song_file_loc = $_FILES['song_file']['tmp_name'];
 
 	//Song Size
@@ -45,8 +44,8 @@ if(isset($_POST['btn-upload']))
 	//Upload files now
 	if(move_uploaded_file($song_file_loc,$mfolder.$final_song) AND move_uploaded_file($cover_file_loc, $afolder.$final_cover))
 	{
-		$sql = "INSERT INTO tbl_songs (songName, songCat, songArtist, songUploader, songCover, songFile, songSize, songDate)
-		VALUES ('$song_name', '$category', '$artise_name', '$song_uploader', '$final_cover', '$final_song', '$new_size', '$date');";
+		$sql = "INSERT INTO tbl_songs (songName, songArtist, songUploader, songCover, songFile)
+		VALUES ('$song_name', '$artise_name', '$song_uploader', '$final_cover', '$final_song');";
 		if ($conn->query($sql) === TRUE) {
 			?>
 			<script>
