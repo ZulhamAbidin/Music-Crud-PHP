@@ -16,6 +16,15 @@ error_reporting(0);
 </head>
 
 <body>
+
+<?php 
+	session_start();
+	if($_SESSION['status']!="login"){
+		header("location:../index.php?pesan=belum_login");
+	}
+	?>
+
+	<a class="nav-link" href="logout.php">Logout</a>
 	<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2 border-b-2 mb-10">
 		<div class="container flex flex-wrap items-center justify-between mx-auto">
 			<a href="https://flowbite.com/" class="flex items-center">
@@ -37,17 +46,17 @@ error_reporting(0);
 				<ul
 					class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
 					<li>
-						<a href="login/admin/uploads.php"
+						<a href="uploads.php"
 							class="block py-2 pl-3 pr-4 text-violet-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-violet-700 md:p-0">Home</a>
 					</li>
 					<li>
-						<a href="#"
-							class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Preview
+						<a href="upload.php"
+							class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Unggah
 							Musik</a>
 					</li>
 					<li>
-						<a href="login/index.php"
-							class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Login</a>
+						<a href="#"
+							class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Preview</a>
 					</li>
 				</ul>
 			</div>
@@ -59,7 +68,10 @@ error_reporting(0);
 <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-center text-gray-900 md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">Selamat Datang Kelompok 1</h1>
 <hr class="my-8 w-96 mx-auto h-1 bg-gradient-to-r from-pink-500 to-violet-500 rounded border-0">
 <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48"></p>
-
+<a href="upload.php" class="flex justify-center mx-auto w-44 py-3 px-5 text-base font-medium text-center text-slate-900 bg-white border border-slate-900 rounded-xl hover:text-white hover:border-0 hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500">
+    Unggah
+    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+</a>
 
 <hr class="my-8 w-full mx-auto h-1 bg-gray-200 rounded border-0">
 
@@ -67,7 +79,7 @@ error_reporting(0);
 	<div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-3 gap-x-4 gap-y-6 mx-10 mt-16 mb-24">
 
 		<?php	
-				include "login/admin/database.php";
+				include "database.php";
 				$sql = "SELECT * FROM tbl_songs ORDER BY songID DESC Limit 20";
 				 
 				// menangkap data id yang di kirim dari url
@@ -86,12 +98,13 @@ error_reporting(0);
 		?>
 		<div class="w-full  col-span-3 mx-auto md:col-span-2 lg:col-span-1 max-w-sm bg-white border border-gray-200 rounded-lg shadow-md ">
 			<div class="flex flex-col items-center pb-6 mt-10">
-				<img class="w-24 h-24 mb-3 rounded-full shadow-lg"  src="login/admin/uploads/cover/<?php echo $row['songCover'];?>" alt="Bonnie image"/>
+				<img class="w-24 h-24 mb-3 rounded-full shadow-lg"  src="uploads/cover/<?php echo $row['songCover'];?>" alt="Bonnie image"/>
 				<h5 class="mb-1 text-xl font-medium text-gray-900"><?php echo $row['songName'];?></h5>
 				<span class="text-sm text-gray-500 "><?php echo $row['songArtist'];?></span>
 			</div>
 			<div class="flex justify-center">
-				<a href="download.php?music=<?php echo $row['songID'];?>" type="button" class=" hover:text-white hover:border-0 hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500  py-2.5 px-5 mr-2 mb-14 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200">Lihat</a>
+				<a href="../../download.php?music=<?php echo $row['songID'];?>" type="button" class=" hover:text-white hover:border-0 hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500  py-2.5 px-5 mr-2 mb-14 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200">Lihat</a>
+				<a href="uploads.php?id=<?php echo $row['songID']; ?>"  type="button" class="hover:text-white hover:border-0 hover:bg-gradient-to-r hover:from-pink-500 hover:to-violet-500 py-2.5 px-5 mr-2 mb-14 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200">Hapus</a>
 			</div>
 		</div>
 

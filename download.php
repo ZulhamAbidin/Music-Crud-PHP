@@ -1,5 +1,5 @@
 <?php
-include "database.php";
+include "login/admin/database.php";
 
 if (isset($_POST['btn-download'])) {
 	$id = $_POST['music'];
@@ -8,7 +8,7 @@ if (isset($_POST['btn-download'])) {
 	if ($result->num_rows > 0) {
 		$row = $result->fetch_assoc();
 		$file_name = $row['songFile'];
-		$file_url = 'uploads/audio/' . $file_name;
+		$file_url = 'login/admin/uploads/audio/' . $file_name;
 		header('Content-Type: application/octet-stream');
 		header("Content-Transfer-Encoding: Binary"); 
 		header("Content-disposition: attachment; filename=\"".$file_name."\""); 
@@ -43,11 +43,11 @@ if (isset($_GET['music'])){
 	<link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
 	<script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 	<title>Download</title>
-	<link rel="icon" href="assets/verified-white.png">
+	<link rel="icon" href="login/admin/assets/verified-white.png">
 	<!-- Jplayer-->
-	<link href="jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="jplayer/lib/jquery.min.js"></script>
-	<script type="text/javascript" src="jplayer/dist/jplayer/jquery.jplayer.min.js"></script>
+	<link href="login/admin/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="login/admin/jplayer/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="login/admin/jplayer/dist/jplayer/jquery.jplayer.min.js"></script>
 	<script type="text/javascript">
 	//<![CDATA[
 	$(document).ready(function(){
@@ -56,11 +56,11 @@ if (isset($_GET['music'])){
 			ready: function (event) {
 				$(this).jPlayer("setMedia", {
 					title: "<?php echo $row['songName'].' - '.$row['songArtist'];?>",
-					m4a: "uploads/audio/<?php echo $row['songFile'];?>",
-					oga: "uploads/audio/<?php echo $row['songFile'];?>"
+					m4a: "login/admin/uploads/audio/<?php echo $row['songFile'];?>",
+					oga: "login/admin/uploads/audio/<?php echo $row['songFile'];?>"
 				});
 			},
-			swfPath: "jplayer/dist/jplayer",
+			swfPath: "login/admin/jplayer/dist/jplayer",
 			supplied: "m4a, oga",
 			wmode: "window",
 			useStateClassSkin: true,
@@ -97,18 +97,17 @@ if (isset($_GET['music'])){
 				<ul
 					class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
 					<li>
-						<a href="uploads.php"
+						<a href="index.php"
 							class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Home
 							</a>
 					</li>
 					<li>
-						<a href="upload.php"
-							class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Unggah
-							Musik</a>
+						<a href="#"
+							class="block py-2 pl-3 pr-4  text-violet-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Preview Musik</a>
 					</li>
 					<li>
-						<a href="#"
-							class="block py-2 pl-3 pr-4  text-violet-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Preview</a>
+						<a href="login/index.php"
+							class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Login</a>
 					</li>
 				</ul>
 			</div>
@@ -125,7 +124,7 @@ if (isset($_GET['music'])){
 		</div>
 		
 		<div class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-3xl hover:bg-gray-100 mx-auto pb-10 mb-20 mt-10">
-			<img class="object-cover mx-10 rounded-t-lg mx-auto h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg my-6 rounded-xl" src="uploads/cover/<?php echo $row['songCover'];?>" alt="">
+			<img class="object-cover mx-10 rounded-t-lg mx-auto h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg my-6 rounded-xl" src="login/admin/uploads/cover/<?php echo $row['songCover'];?>" alt="">
 			<div class="flex flex-col justify-between p-4 leading-normal">
 					
 				<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Judul <?php echo $row['songName'];?></h5>
@@ -220,10 +219,11 @@ if (isset($_GET['music'])){
 							</div>
 						</div>
 					</div>
-
-				<!-- end pemutar -->
+		<!-- end pemutar -->
 			</div>
 		</div>
+
+		
 
 
 <footer class="p-4 shadow bg-white border-t-4 text-slate-900 md:flex md:items-center md:justify-between md:p-6 ">
